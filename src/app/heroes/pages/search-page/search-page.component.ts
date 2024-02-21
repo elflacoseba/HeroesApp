@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-page',
@@ -6,6 +7,13 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class SearchPageComponent {
+export class SearchPageComponent implements OnInit {
+
+  public searchInput = new FormControl();
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
 
 }
