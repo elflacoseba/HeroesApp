@@ -5,8 +5,23 @@
     <input
       type="text"
       matInput
-      [formControl]="searchInput">
-  </mat-form-field>
+      [formControl]="searchInput"
+      (input)="searchHero()"
+      [matAutocomplete]="auto">
 
-  {{ searchInput.value| json }}
+      <mat-autocomplete autoActiveFirstOption
+        #auto="matAutocomplete"
+        (optionSelected)="onSelectedOption($event)"
+      >
+          <mat-option *ngFor="let hero of heroes" [value]="hero">
+            {{ hero.superhero}}
+          </mat-option>
+          <mat-option
+            *ngIf="heroes.length === 0 && searchInput.value && searchInput.value.length > 0"
+            value="">
+            No se encontraron resultados para: {{ searchInput.value}}
+          </mat-option>
+      </mat-autocomplete>
+
+  </mat-form-field>
 </div>
