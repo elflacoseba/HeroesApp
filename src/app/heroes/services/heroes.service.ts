@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of } from 'rxjs';
 import { Hero } from '../interfaces/hero.interface';
 import { environments } from 'src/environments/environments';
-
+import { filter, map } from 'rxjs/operators';
 @Injectable({providedIn: 'root'})
 export class HeroService {
 
@@ -22,7 +22,18 @@ export class HeroService {
       );
   }
 
-  getSuggestions( query: string): Observable<Hero[]> {
-    return this.http.get<Hero[]>(`${ this.baseUrl }/heroes?q=${ query }&_limit=6`);
+  getSuggestions(query: string): Observable<Hero[]> {
+    return this.http.get<Hero[]>(`${this.baseUrl}/heroes`)
+      .pipe(
+        map(heroes => {
+          if (heroes.length === 0) {
+            console.log('No se encontraron héroes');
+            return [];
+          }
+
+          return heroes.filter(hero => hero.superhero.toLowerCase().includes(query.toLowerCase()));
+        })
+      );
   }
+
 }
