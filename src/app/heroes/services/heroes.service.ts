@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of } from 'rxjs';
 import { Hero } from '../interfaces/hero.interface';
 import { environments } from 'src/environments/environments';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
 @Injectable({providedIn: 'root'})
 export class HeroService {
 
