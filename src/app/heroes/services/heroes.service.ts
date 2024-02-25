@@ -42,4 +42,24 @@ export class HeroService {
       );
   }
 
+  addHero( hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(`${ this.baseUrl }/heroes`, hero);
+  }
+
+  updateHero( hero: Hero): Observable<Hero> {
+    if (!hero.id) throw Error('El id del héroe es requerido.');
+
+    return this.http.patch<Hero>(`${ this.baseUrl }/heroes/${ hero.id }`, hero);
+  }
+
+  deleteHeroById( id: string): Observable<boolean> {
+    if (!id) throw Error('El id del héroe es requerido.');
+
+    return this.http.delete(`${ this.baseUrl }/heroes/${ id }`)
+      .pipe(
+        catchError( error => of(false) ),
+        map( () => true )
+      );
+  }
+
 }
