@@ -73,7 +73,11 @@
             >
         </mat-form-field>
 
+      </form>
+
+      <div class="flex justify-content-between">
         <button
+          *ngIf="currentHero.id"
           mat-flat-button
           color="warn"
           class="ml-2">
@@ -82,7 +86,7 @@
         </button>
         <span class="spacer"></span>
         <button
-          type="submit"
+          (click)="onSubmit()"
           mat-flat-button
           color="primary"
           class="mr-2"
@@ -90,8 +94,7 @@
           <mat-icon>save</mat-icon>
           Guardar
         </button>
-
-      </form>
+      </div>
 
     </mat-card-content>
   </mat-card>
