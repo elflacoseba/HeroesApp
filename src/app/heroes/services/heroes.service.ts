@@ -6,7 +6,7 @@ import { environments } from 'src/environments/environments';
 import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
-export class HeroService {
+export class HeroesService {
 
   private baseUrl: string = environments.baseUrl;
 

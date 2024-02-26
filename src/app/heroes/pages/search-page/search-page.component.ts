@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Hero } from '../../interfaces/hero.interface';
-import { HeroService } from '../../services/heroes.service';
+import { HeroesService } from '../../services/heroes.service';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
@@ -16,7 +16,7 @@ export class SearchPageComponent  {
   public heroes: Hero[] = [];
   public selectedHero?: Hero;
 
-  constructor(private heroesService: HeroService) {
+  constructor(private heroesService: HeroesService) {
 
   }
 

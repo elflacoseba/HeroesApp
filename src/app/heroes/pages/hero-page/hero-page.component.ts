@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../../services/heroes.service';
+import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { delay, switchMap } from 'rxjs';
 import { Hero } from '../../interfaces/hero.interface';
@@ -15,7 +15,7 @@ export class HeroPageComponent implements OnInit {
   public hero?: Hero;
 
   constructor(
-    private heroesService: HeroService,
+    private heroesService: HeroesService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
