@@ -17,26 +17,25 @@ const checkAuthStatus = (): Observable<boolean> => {
         if (!isAuthenticated) {
           router.navigate(['/auth/login']);
         }
-
       })
     );
 
 }
 
 export const CanMatchGuard: CanMatchFn = (
-  route: Route,
-  segments: UrlSegment[]
-) => {
+    route: Route,
+    segments: UrlSegment[]
+  ) => {
 
-  console.log( 'Can Match Guard' );
-  return true;
+  //console.log( 'Can Match Guard' );
+  return checkAuthStatus();
 }
 
 export const CantActivateGuard: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
   ) => {
 
-    console.log( 'Can Activate Guard' );
-    return true;
+    //console.log( 'Can Activate Guard' );
+    return checkAuthStatus();
 }
